@@ -17,8 +17,9 @@ const AuthenticatedPage = ({ children, className }: AuthenticatedPageProps) => {
   const { wallets } = useWallets();
 
   const {
-    isError,
     data: userData,
+    isError,
+    isFetching,
     refetch,
   } = api.user.getById.useQuery(
     { id: user?.id ?? "" },
@@ -35,7 +36,7 @@ const AuthenticatedPage = ({ children, className }: AuthenticatedPageProps) => {
     if (ready && !authenticated) router.push("/");
   }, [ready, authenticated, router]);
 
-  if (!ready) {
+  if (!ready || isFetching) {
     return (
       <div className="page space-y-4 !pt-32">
         <div

@@ -23,7 +23,7 @@ export default function Navbar() {
         router.push("/create-org");
         return;
       }
-      if (!wasPreviouslyAuthenticated) router.push("/deployments");
+      if (!wasPreviouslyAuthenticated) router.push("/rollups");
     },
     // Set up an `onError` callback to run when there is a `login` error
     onError(error) {
@@ -57,6 +57,13 @@ export default function Navbar() {
 
         {/* Primary Navbar items */}
         <div className={`hidden items-center space-x-4 lg:flex`}>
+          {authenticated && (
+            <Link href="/rollups">
+              <Button size="sm" className={`text-md`}>
+                Dashboard
+              </Button>
+            </Link>
+          )}
           <Button
             variant={authenticated ? "outline" : "default"}
             size="sm"

@@ -59,7 +59,7 @@ export default function NewUserPage({
       }
       toast.success(`Org ${organization.name} created for user ${user.email}`);
       await refetchUserData();
-      router.push("/deployments");
+      router.push("/rollups");
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong, please check the logs");
