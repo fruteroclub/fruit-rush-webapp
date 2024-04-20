@@ -46,7 +46,10 @@ export default function Rollups() {
             {rollupData?.rollups && rollupData?.rollups.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2">
                 {rollupData.rollups.map((rollup) => (
-                  <Card className="hover:cursor-pointer hover:ring-2 hover:ring-blue-500">
+                  <Card
+                    key={`${rollup.name}-${rollup.subdomain}-${rollup.chainId}`}
+                    className="hover:cursor-pointer hover:ring-2 hover:ring-blue-500"
+                  >
                     <CardContent className="py-6">
                       <div className="flex w-full gap-x-4 pb-4">
                         <Badge variant="outline" className="px-4 py-1.5">
@@ -86,7 +89,7 @@ export default function Rollups() {
               </div>
             ) : (
               <div className="flex w-full flex-col items-center gap-y-6 py-12">
-                <p>You currently don't have any active Rollups.</p>
+                <p>You currently don&apos;t have any active Rollups.</p>
                 <Link href="/rollups/create">
                   <Button>Deploy New Rollup</Button>
                 </Link>
