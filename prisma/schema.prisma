@@ -20,7 +20,7 @@ model User {
   avatarUrl             String?
   bannerUrl             String?
   organizations         Organization[]
-  deployments           Deployment[]
+  rollups           Rollup[]
   createdAt             DateTime            @default(now())
   updatedAt             DateTime            @updatedAt
 
@@ -38,9 +38,11 @@ model Organization {
     @@index([name])
 }
 
-model Deployment {
+model Rollup {
     id                  Int                 @id @default(autoincrement())
     name                String              @unique
+    subdomain           String
+    chainId             Int
     ownerId             String
     owner               User                @relation(fields: [ownerId], references: [id])
     createdAt           DateTime            @default(now())

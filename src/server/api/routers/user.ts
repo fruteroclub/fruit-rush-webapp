@@ -29,6 +29,7 @@ export const userRouter = createTRPCRouter({
 
         return { user: newUser, organization: newOrganization };
       } catch (error) {
+        console.log(error);
         return { error, errorMsg: "Something went wrong" };
       }
     }),
@@ -53,6 +54,7 @@ export const userRouter = createTRPCRouter({
           return { user: null, message: "No user found" };
         }
       } catch (error) {
+        console.log(error);
         return { error, errorMsg: "Something went wrong" };
       }
     }),

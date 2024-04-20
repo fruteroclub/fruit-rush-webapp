@@ -67,6 +67,7 @@ export default function NewUserPage({
       setIsLoading(false);
     }
   }
+
   return (
     <div className="page">
       <div className="pb-8">

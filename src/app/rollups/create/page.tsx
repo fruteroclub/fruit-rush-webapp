@@ -6,7 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { ChevronLeft } from "lucide-react";
 import React, { ChangeEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { api } from "@/trpc/react";
+import { usePrivy } from "@privy-io/react-auth";
 
 type FormState = {
   rollupName: string;
@@ -20,6 +23,12 @@ export default function CreateNewRollup() {
     subdomain: "",
     chainId: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { ready, user: userData } = usePrivy();
+  const router = useRouter();
+
+  const createRollup = api.rollup.create.useMutation();
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -33,14 +42,43 @@ export default function CreateNewRollup() {
     if (!form.rollupName || !form.subdomain || !form.chainId) {
       return toast.warning("All fields are required!");
     }
+    if (!userData?.id) {
+      return toast.error("No user detected, please login again");
+    }
     console.log(form);
+
+    try {
+      setIsLoading(true);
+      const { rollup, errorMsg } = await createRollup.mutateAsync({
+        ownerId: userData?.id,
+        rollupName: form.rollupName,
+        subdomain: form.subdomain,
+        chainId: form.chainId,
+      });
+      if (!rollup || errorMsg) {
+        toast.warning(
+          errorMsg ??
+            "An error occurred while deploying Rollup, please try again...",
+        );
+        return;
+      }
+      toast.success(
+        `Rollup ${rollup.name} created for user ${userData.google?.email}`,
+      );
+      router.push("/rollups");
+    } catch (error) {
+      console.error(error);
+      toast.error("Something went wrong, please check the logs");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
     <AuthenticatedPage>
       <div className="flex w-full flex-col gap-y-6 md:max-w-2xl lg:max-w-3xl xl:max-w-5xl">
         <div className="justify-left flex w-full items-center gap-x-2 md:gap-x-3 lg:gap-x-4">
-          <Button size="icon" variant="outline">
+          <Button size="icon" variant="outline" onClick={() => router.back()}>
             <ChevronLeft />
           </Button>
           <h2>Deploy New Rollup</h2>
@@ -161,8 +199,9 @@ export default function CreateNewRollup() {
                 size="lg"
                 className="!h-12 w-full text-lg"
                 onClick={handleDeployRollup}
+                disabled={isLoading}
               >
-                Deploy Rollup
+                {isLoading ? "Deploying..." : "Deploy Rollup"}
               </Button>
             </div>
           </div>
