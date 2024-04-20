@@ -1,3 +1,5 @@
+"use client";
+
 import { Input } from "@/components/ui/input";
 import { api } from "@/trpc/react";
 import { useRouter } from "next/navigation";
@@ -20,7 +22,7 @@ export default function NewUserPage({
 }: NewUserPageProps) {
   const [orgNameValue, setOrgNameValue] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { push } = useRouter();
+  const router = useRouter();
 
   const createUserWithOrg = api.user.create.useMutation();
 
@@ -57,7 +59,7 @@ export default function NewUserPage({
       }
       toast.success(`Org ${organization.name} created for user ${user.email}`);
       await refetchUserData();
-      push("/deployments");
+      router.push("/deployments");
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong, please check the logs");

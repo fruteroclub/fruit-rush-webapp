@@ -17,7 +17,6 @@ const AuthenticatedPage = ({ children, className }: AuthenticatedPageProps) => {
   const { wallets } = useWallets();
 
   const {
-    isFetching,
     isError,
     data: userData,
     refetch,
@@ -43,7 +42,15 @@ const AuthenticatedPage = ({ children, className }: AuthenticatedPageProps) => {
           className="text-surface inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
           role="status"
         />
-        <p className="text-xl">cargando...</p>
+        <p className="text-xl">Loading...</p>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="page">
+        <h4>There was an error fetching user data, please reload page</h4>
       </div>
     );
   }
@@ -51,7 +58,7 @@ const AuthenticatedPage = ({ children, className }: AuthenticatedPageProps) => {
   if (ready && !authenticated) {
     return (
       <div className="page space-y-4 !pt-32">
-        <p className="text-xl">redirigiendo...</p>
+        <p className="text-xl">Redirecting...</p>
       </div>
     );
   }

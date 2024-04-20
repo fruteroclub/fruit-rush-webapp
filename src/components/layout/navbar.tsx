@@ -5,13 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import MobileMenu from "./mobileMenu";
 import { useLogin, useLogout, usePrivy } from "@privy-io/react-auth";
 
 export default function Navbar() {
   const router = useRouter();
-  const { ready, authenticated } = usePrivy();
+  const { authenticated } = usePrivy();
   const { login } = useLogin({
     // Set up an `onComplete` callback to run when `login` completes
     onComplete(user, isNewUser, wasPreviouslyAuthenticated) {

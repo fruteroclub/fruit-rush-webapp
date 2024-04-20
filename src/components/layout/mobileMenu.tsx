@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { ExternalLink, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -10,13 +9,12 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 
 type MobileMenuProps = {
   authenticated: boolean;
   login: () => void;
   logout: () => void;
-  // menuItems?: [{ displayText: string; href: string }];
 };
 
 export default function MobileMenu({
