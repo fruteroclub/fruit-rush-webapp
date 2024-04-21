@@ -2,12 +2,12 @@
   "networkFeeReceiver": "0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B",
   "infrastructureFeeCollector": "0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B",
   "staker": [
-    "0x04cD2eeE752cEaC6CBcfDD427a0fBf4654189328"
+    "0x323E6dd34D33eCE5D7237E2C1B1988ee381eFdd4"
   ],
-  "batchPoster": "0x918cF91901548e71c9D0097628F1DC21510d83F1",
+  "batchPoster": "0x322D71A6C458a65e0D281109c5ba6CCC28Ad433c",
   "chainOwner": "0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B",
   "chainId": 420,
-  "chainName": "frutero-chain",
+  "chainName": "Fruit Rush",
   "minL2BaseFee": 100000000,
   "parentChainId": 421614,
   "parent-chain-node-url": "https://sepolia-rollup.arbitrum.io/rpc",

@@ -33,7 +33,7 @@ export default function Rollups() {
         {ready && (
           <>
             {rollupData?.rollups && rollupData?.rollups.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8">
+              <div className="grid grid-cols-1 gap-y-4 md:grid-cols-2 md:gap-x-8">
                 {rollupData.rollups.map((rollup) => (
                   <Card
                     key={`${rollup.name}-${rollup.subdomain}-${rollup.chainId}`}
@@ -62,7 +62,7 @@ export default function Rollups() {
                           <div>
                             <h4>{rollup.name}</h4>
                             <p className="text-sm text-gray-500">
-                              https://test-url-rpc.fruitrush.io
+                              {`https://${rollup.name}-rpc.fruit-rush.vercel.app`}
                             </p>
                           </div>
                           <div>

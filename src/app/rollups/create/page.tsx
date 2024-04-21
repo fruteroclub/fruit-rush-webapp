@@ -21,7 +21,7 @@ type FormState = {
 export default function CreateNewRollup() {
   const [form, setForm] = useState<FormState>({
     rollupName: "",
-    subdomain: "",
+    subdomain: "test",
     chainId: "",
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -181,16 +181,6 @@ export default function CreateNewRollup() {
                 <Input
                   id="rollupName"
                   name="rollupName"
-                  onChange={handleInputChange}
-                />
-              </div>
-              <div className="w-full space-y-2">
-                <label htmlFor="subdomain" className="text-lg font-medium">
-                  Subdomain
-                </label>
-                <Input
-                  id="subdomain"
-                  name="subdomain"
                   onChange={handleInputChange}
                 />
               </div>

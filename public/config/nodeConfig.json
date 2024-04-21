@@ -1,7 +1,7 @@
 {
   "chain": {
-    "info-json": "[{\"chain-id\":420,\"parent-chain-id\":421614,\"parent-chain-is-arbitrum\":true,\"chain-name\":\"frutero-chain\",\"chain-config\":{\"homesteadBlock\":0,\"daoForkBlock\":null,\"daoForkSupport\":true,\"eip150Block\":0,\"eip150Hash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"eip155Block\":0,\"eip158Block\":0,\"byzantiumBlock\":0,\"constantinopleBlock\":0,\"petersburgBlock\":0,\"istanbulBlock\":0,\"muirGlacierBlock\":0,\"berlinBlock\":0,\"londonBlock\":0,\"clique\":{\"period\":0,\"epoch\":0},\"arbitrum\":{\"EnableArbOS\":true,\"AllowDebugPrecompiles\":false,\"DataAvailabilityCommittee\":false,\"InitialArbOSVersion\":11,\"GenesisBlockNum\":0,\"MaxCodeSize\":24576,\"MaxInitCodeSize\":49152,\"InitialChainOwner\":\"0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B\"},\"chainId\":420},\"rollup\":{\"bridge\":\"0x8e86A17dA3EA64BbaBB1077a00F437c1d86E7C7D\",\"inbox\":\"0xB1c3B54f70A7EB9735660541B94237bB1ce84f8A\",\"sequencer-inbox\":\"0x4b0ba67C4fC26f53828e7a9276BA34BEeF60AEaC\",\"rollup\":\"0xe95BfA5640F57277fEACd67e741367ddEB7edeA5\",\"validator-utils\":\"0xB11EB62DD2B352886A4530A9106fE427844D515f\",\"validator-wallet-creator\":\"0xEb9885B6c0e117D339F47585cC06a2765AaE2E0b\",\"deployed-at\":32648515}}]",
-    "name": "frutero-chain"
+    "info-json": "[{\"chain-id\":420,\"parent-chain-id\":421614,\"parent-chain-is-arbitrum\":true,\"chain-name\":\"Fruit Rush\",\"chain-config\":{\"homesteadBlock\":0,\"daoForkBlock\":null,\"daoForkSupport\":true,\"eip150Block\":0,\"eip150Hash\":\"0x0000000000000000000000000000000000000000000000000000000000000000\",\"eip155Block\":0,\"eip158Block\":0,\"byzantiumBlock\":0,\"constantinopleBlock\":0,\"petersburgBlock\":0,\"istanbulBlock\":0,\"muirGlacierBlock\":0,\"berlinBlock\":0,\"londonBlock\":0,\"clique\":{\"period\":0,\"epoch\":0},\"arbitrum\":{\"EnableArbOS\":true,\"AllowDebugPrecompiles\":false,\"DataAvailabilityCommittee\":false,\"InitialArbOSVersion\":11,\"GenesisBlockNum\":0,\"MaxCodeSize\":24576,\"MaxInitCodeSize\":49152,\"InitialChainOwner\":\"0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B\"},\"chainId\":420},\"rollup\":{\"bridge\":\"0x8e86A17dA3EA64BbaBB1077a00F437c1d86E7C7D\",\"inbox\":\"0xB1c3B54f70A7EB9735660541B94237bB1ce84f8A\",\"sequencer-inbox\":\"0x4b0ba67C4fC26f53828e7a9276BA34BEeF60AEaC\",\"rollup\":\"0xe95BfA5640F57277fEACd67e741367ddEB7edeA5\",\"validator-utils\":\"0xB11EB62DD2B352886A4530A9106fE427844D515f\",\"validator-wallet-creator\":\"0xEb9885B6c0e117D339F47585cC06a2765AaE2E0b\",\"deployed-at\":32648515}}]",
+    "name": "Fruit Rush"
   },
   "parent-chain": {
     "connection": {
@@ -36,14 +36,14 @@
       "max-size": 90000,
       "enable": true,
       "parent-chain-wallet": {
-        "private-key": "0x8058db5a2462c6277e9c21b4f33b4d7c546a5b79d4b00c493fb34ff81ca78288"
+        "private-key": "0x915ba8fb593813f17372f1319f9c10f22ca208f608749d2e444c29115f044786"
       }
     },
     "staker": {
       "enable": true,
       "strategy": "MakeNodes",
       "parent-chain-wallet": {
-        "private-key": "0xec99fb8c053bc0788ff9a5f6468644e85eeaf1eb0812fc71324233df8262d379"
+        "private-key": "0x1826a0d3ad73be1dcf3447436a68846c513d5736e40db95d36914ebfe26e58a3"
       }
     },
     "dangerous": {
