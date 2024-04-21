@@ -14,10 +14,10 @@ export const rollupRouter = createTRPCRouter({
     )
     .mutation(async ({ ctx, input }) => {
       try {
+        const { ownerId, rollupName, subdomain, chainId } = input;
         // TODO
         // Send data to backend for rollup deployment
 
-        const { ownerId, rollupName, subdomain, chainId } = input;
         const newRollup = await ctx.db.rollup.create({
           data: {
             ownerId,
