@@ -1,0 +1,33 @@
+{
+  "networkFeeReceiver": "0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B",
+  "infrastructureFeeCollector": "0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B",
+  "staker": [
+    "0x80A8d040404914F1490CB62d682E9BF6E477D179"
+  ],
+  "batchPoster": "0x37039F084afb1c24aa916041372481Aa2258D658",
+  "chainOwner": "0xe1A73Ea88BDC41D98C1bC2f5325881320031F02B",
+  "chainId": 420,
+  "chainName": "frutero-chain",
+  "minL2BaseFee": 100000000,
+  "parentChainId": 421614,
+  "parent-chain-node-url": "https://sepolia-rollup.arbitrum.io/rpc",
+  "utils": "0xB11EB62DD2B352886A4530A9106fE427844D515f",
+  "rollup": "0xe95BfA5640F57277fEACd67e741367ddEB7edeA5",
+  "inbox": "0xB1c3B54f70A7EB9735660541B94237bB1ce84f8A",
+  "nativeToken": "0x0000000000000000000000000000000000000000",
+  "outbox": "0xe9c65B621ae29Fa9F9CD4c5717F6eF9bD99410b6",
+  "rollupEventInbox": "0x6f4EE5bff5b21DA4D80D18398Ca8dA79CE2ca46b",
+  "challengeManager": "0xC142eE3Ca89D9b23ad64C49AafE44e973AbA81E4",
+  "adminProxy": "0xb926f3f58d1fF7E92EdAA4fF2F474Ef59092b979",
+  "sequencerInbox": "0x4b0ba67C4fC26f53828e7a9276BA34BEeF60AEaC",
+  "bridge": "0x8e86A17dA3EA64BbaBB1077a00F437c1d86E7C7D",
+  "upgradeExecutor": "0x11b0F0483EFD93F87E2D695106F94400F9fe88CD",
+  "validatorUtils": "0xB11EB62DD2B352886A4530A9106fE427844D515f",
+  "validatorWalletCreator": "0xEb9885B6c0e117D339F47585cC06a2765AaE2E0b",
+  "deployedAtBlockNumber": 32648515,
+  "batcherAddress": "0xAD0fd320a8E78623E0596D601847B5D831910643",
+  "validators": [
+    "0xE0271EBb42CE56034906C92834D3b9B8041e0314"
+  ],
+  "batcherPoster": "0xc22e0949581513055fdca1F4d90074E8b684E36A"
+}

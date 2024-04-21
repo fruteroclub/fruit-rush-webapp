@@ -7,8 +7,13 @@ import dotenv from "dotenv";
 import { createValidatorsAndBatcher } from "./createWallet";
 // import { dockerComposeUp } from "./dockerSetup";
 import { type ConnectedWallet } from "@privy-io/react-auth";
+import { createRollupPrepareTransactionReceipt } from "@arbitrum/orbit-sdk";
 
 dotenv.config();
+
+const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
 
 type interactWithContractParams = {
   numValidators?: number;
@@ -23,6 +28,7 @@ export async function deployRollup({
   numValidators = 1,
   tokenAddressToBeNativeToken = "0x0000000000000000000000000000000000000000",
   chainId,
+  chainName,
 }: interactWithContractParams) {
   if (!window.ethereum) {
     console.error(
@@ -107,7 +113,24 @@ export async function deployRollup({
 
     // Si la transacción de createRollup es exitosa, llama a la función dockerComposeUp
     if (transactionResponse) {
-      console.log(transactionResponse);
+      const response = await fetch(`${baseUrl}/api/generate-json`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          batcher,
+          chainId,
+          chainName,
+          validators,
+        }),
+      });
+      const resData = response.json();
+      console.log("generate json resData", resData);
+      console.log("transactionResponse >>>>>>>", transactionResponse);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+      // const transactionReceipt = await transactionResponse.wait(1);
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      // const data = createRollupPrepareTransactionReceipt(transactionReceipt);
+      // console.log(data);
       return transactionResponse;
       // dockerComposeUp();
     }

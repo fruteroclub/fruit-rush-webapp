@@ -11,16 +11,27 @@ import path from "path";
 export const dynamic = "force-dynamic";
 
 export async function POST(request: NextRequest) {
-  const configPath = path.join(__dirname, "../config/nodeConfig.json");
+  const configPath = path.join(
+    process.cwd(),
+    "public",
+    "config",
+    "nodeConfig.json",
+  );
   const configPath2 = path.join(
-    __dirname,
-    "../config/orbitSetupScriptConfig.json",
+    process.cwd(),
+    "public",
+    "config",
+    "orbitSetupScriptConfig.json",
   );
   try {
     const data = await request.json();
+    console.log(data);
     const { batcher, chainId, chainName, validators } = data;
     const configFile = await fs.readFile(configPath, "utf8");
     const configFile2 = await fs.readFile(configPath2, "utf8");
+    console.log(configFile);
+    console.log(configFile2);
+    console.log("things ok up until here???");
     const config = JSON.parse(configFile);
     const config2 = JSON.parse(configFile2);
 
@@ -31,14 +42,10 @@ export async function POST(request: NextRequest) {
     config2.staker = validators.map((v: { address: string }) => v.address);
 
     chainInfo.forEach((info: any) => {
-      if (info["chain-name"] === "Rafachain Testing") {
-        info["chain-name"] = chainName;
-      }
+      info["chain-name"] = chainName;
     });
 
-    if (config.chain.name === "Rafachain Testing") {
-      config.chain.name = chainName;
-    }
+    config.chain.name = chainName;
     chainInfo[0]["chain-id"] = chainId;
     chainInfo[0]["chain-config"].chainId = chainId;
     config.node["batch-poster"]["parent-chain-wallet"]["private-key"] =
