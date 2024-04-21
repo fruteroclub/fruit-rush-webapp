@@ -29,9 +29,6 @@ export async function POST(request: NextRequest) {
     const { batcher, chainId, chainName, validators } = data;
     const configFile = await fs.readFile(configPath, "utf8");
     const configFile2 = await fs.readFile(configPath2, "utf8");
-    console.log(configFile);
-    console.log(configFile2);
-    console.log("things ok up until here???");
     const config = JSON.parse(configFile);
     const config2 = JSON.parse(configFile2);
 

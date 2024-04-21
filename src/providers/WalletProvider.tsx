@@ -17,7 +17,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
         embeddedWallets: {
           createOnLogin: "off",
         },
-        defaultChain: sepolia,
+        defaultChain: arbitrumSepolia,
         supportedChains: [arbitrum, arbitrumSepolia, sepolia],
       }}
     >

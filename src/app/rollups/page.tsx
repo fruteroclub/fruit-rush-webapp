@@ -3,13 +3,7 @@
 import AuthenticatedPage from "@/components/layout/authenticatedPage";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { api } from "@/trpc/react";
 import { usePrivy } from "@privy-io/react-auth";
 import Image from "next/image";
@@ -18,12 +12,7 @@ import React from "react";
 
 export default function Rollups() {
   const { ready, user: userData } = usePrivy();
-  const {
-    data: rollupData,
-    isError,
-    isFetching,
-    refetch,
-  } = api.rollup.getAllFromUser.useQuery(
+  const { data: rollupData } = api.rollup.getAllFromUser.useQuery(
     { ownerId: userData?.id ?? "" },
     {
       enabled: Boolean(ready && userData?.id),
@@ -44,7 +33,7 @@ export default function Rollups() {
         {ready && (
           <>
             {rollupData?.rollups && rollupData?.rollups.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-8">
                 {rollupData.rollups.map((rollup) => (
                   <Card
                     key={`${rollup.name}-${rollup.subdomain}-${rollup.chainId}`}

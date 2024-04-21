@@ -8,7 +8,7 @@ import { ChevronLeft } from "lucide-react";
 import React, { type ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-// import { api } from "@/trpc/react";
+import { api } from "@/trpc/react";
 import { usePrivy, useWallets } from "@privy-io/react-auth";
 import { deployRollup } from "@/helpers/deployRollup";
 
@@ -30,7 +30,7 @@ export default function CreateNewRollup() {
   const { wallets } = useWallets();
   const router = useRouter();
 
-  // const createRollup = api.rollup.create.useMutation();
+  const createRollup = api.rollup.create.useMutation();
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -43,13 +43,12 @@ export default function CreateNewRollup() {
   console.log(wallets);
 
   async function handleDeployRollup() {
-    // if (!form.rollupName || !form.chainId) {
-    //   return toast.warning("All fields are required!");
-    // }
+    if (!form.rollupName || !form.chainId) {
+      return toast.warning("All fields are required!");
+    }
     if (!userData?.id) {
       return toast.error("No user detected, please login again");
     }
-    console.log(form);
 
     try {
       setIsLoading(true);
@@ -62,31 +61,27 @@ export default function CreateNewRollup() {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const res = await deployRollup({
         wallet: appWallet,
-        chainId: 420,
-        chainName: "frutero-chain",
-        // chainId: parseInt(form.chainId),
-        // chainName: form.rollupName,
+        chainId: parseInt(form.chainId),
+        chainName: form.rollupName,
       });
 
-      console.log(res);
-
-      // const { rollup, errorMsg } = await createRollup.mutateAsync({
-      //   ownerId: userData?.id,
-      //   rollupName: form.rollupName,
-      //   subdomain: form.subdomain,
-      //   chainId: form.chainId,
-      // });
-      // if (!rollup || errorMsg) {
-      //   toast.warning(
-      //     errorMsg ??
-      //       "An error occurred while deploying Rollup, please try again...",
-      //   );
-      //   return;
-      // }
-      // toast.success(
-      //   `Rollup ${rollup.name} created for user ${userData.google?.email}`,
-      // );
-      // router.push("/rollups");
+      const { rollup, errorMsg } = await createRollup.mutateAsync({
+        ownerId: userData?.id,
+        rollupName: form.rollupName,
+        subdomain: form.subdomain,
+        chainId: form.chainId,
+      });
+      if (!rollup || errorMsg) {
+        toast.warning(
+          errorMsg ??
+            "An error occurred while deploying Rollup, please try again...",
+        );
+        return;
+      }
+      toast.success(
+        `Rollup ${rollup.name} created for user ${userData.google?.email}`,
+      );
+      router.push("/rollups");
     } catch (error) {
       console.error(error);
       toast.error("Something went wrong, please check the logs");
